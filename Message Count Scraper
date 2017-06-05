@@ -1,0 +1,33 @@
+#Count messages in a groupme and print number of messages per person
+import groupy
+print (groupy.config.KEY_LOCATION)
+
+groups = groupy.Group.list()
+#type name of group
+my_groups = groups.filter(name__contains='INSERT HERE')
+#prints all groups that match criteria
+for g in my_groups:
+    print (g.name)
+#default set to first
+my_group = my_groups[0]
+#total messages
+print(my_group.message_count)
+
+members = my_group.members()
+dict = {}
+for m in members:
+    dict[m.user_id] = 0
+
+#get all the messages
+messages = my_group.messages()
+while messages.iolder():
+    pass
+
+for a in messages:
+    if a.user_id in dict:
+        dict[a.user_id] += 1
+print(dict)
+
+for m in members:
+    print(m.nickname)
+    print(dict[m.user_id])
